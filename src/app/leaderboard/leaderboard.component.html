@@ -1,0 +1,9 @@
+<div class="leaderboard-container">
+    <h1>Ladderboard</h1>
+    <ol>
+        <li *ngFor="let player of players" class="player-item">
+            <span class="player-name">{{ player.playerName }}</span>
+            <span class="player-score">{{ player.score }}</span>
+        </li>
+    </ol>
+</div>
