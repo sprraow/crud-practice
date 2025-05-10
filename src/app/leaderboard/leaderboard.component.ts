@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LeaderboardService } from '../leaderboard.service';
 
 @Component({
   selector: 'app-leaderboard',
@@ -7,10 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './leaderboard.component.html',
   styleUrl: './leaderboard.component.css'
 })
-export class LeaderboardComponent {
-  players =[
-    {playerName: 'Abe', score: 90},
-    {playerName: 'Babe', score: 80},
-    {playerName: 'Cabe', score: 70}
-  ]
+export class LeaderboardComponent implements OnInit {
+  players: any [] = []
+
+  constructor(private leaderboardService: LeaderboardService) {}
+
+  ngOnInit(): void {
+      console.log('test')
+      this.leaderboardService.getLeaderboard().subscribe(data => {
+        this.players = data
+      })
+  }
 }
