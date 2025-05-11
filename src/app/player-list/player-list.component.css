@@ -1,0 +1,43 @@
+ol {
+  list-style-position: inside;
+  padding: 0;
+}
+
+.player-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin: 8px 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.player-name {
+  font-weight: 600;
+}
+
+.player-score {
+  color: #4a90e2;
+}
+
+.delete-button {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.delete-button:hover {
+  background-color: #cc0000;
+} 

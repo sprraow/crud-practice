@@ -1,0 +1,7 @@
+<ol>
+  <li *ngFor="let player of players" class="player-item">
+    <span class="player-name">{{ player.playerName }}</span>
+    <span class="player-score">{{ player.score }}</span>
+    <button class="delete-button" (click)="onDelete(player.id)">X</button>
+  </li>
+</ol> 

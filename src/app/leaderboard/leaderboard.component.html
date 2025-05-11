@@ -10,27 +10,13 @@
         </button>
     </div>
 
-    <div *ngIf="showForm" class="form-container">
-        <form (ngSubmit)="addPlayer()">
-            <label>
-                Name:
-                <input type="text" [(ngModel)]="newPlayer.playerName" name="playerName" required/>
-            </label>
-            <br />
-            <label>
-                Score:
-                <input type="number" [(ngModel)]="newPlayer.score" name="score" required />
-            </label>
-            <br />
-            <button type="submit">Add Player</button>
-        </form>
-    </div>
+    <app-player-form
+        *ngIf="showForm"
+        (playerAdded)="onPlayerAdded($event)"
+    ></app-player-form>
 
-    <ol>
-        <li *ngFor="let player of players" class="player-item">
-            <span class="player-name">{{ player.playerName }}</span>
-            <span class="player-score">{{ player.score }}</span>
-            <button class="delete-button" (click)="deletePlayer(player.id)">X</button>
-        </li>
-    </ol>
+    <app-player-list
+        [players]="players"
+        (deletePlayer)="onPlayerDeleted($event)"
+    ></app-player-list>
 </div>

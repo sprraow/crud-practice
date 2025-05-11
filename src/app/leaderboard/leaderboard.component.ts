@@ -1,37 +1,37 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { LeaderboardService } from '../leaderboard.service';
-import { FormsModule } from '@angular/forms';
-import { Player } from '../player.model'
+import { SortService } from '../services/sort.service';
+import { Player } from '../player.model';
+import { PlayerFormComponent } from '../player-form/player-form.component';
+import { PlayerListComponent } from '../player-list/player-list.component';
 
 @Component({
   selector: 'app-leaderboard',
-  imports: [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, PlayerFormComponent, PlayerListComponent],
   templateUrl: './leaderboard.component.html',
-  styleUrl: './leaderboard.component.css'
+  styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
   players: Player[] = [];
   showForm = false;
-  newPlayer: Player = { playerName: '', score: 0 };
-  sortAscending = false; // Default to descending order
+  sortAscending = false;
 
-  constructor(private leaderboardService: LeaderboardService) {}
+  constructor(
+    private leaderboardService: LeaderboardService,
+    private sortService: SortService
+  ) {}
 
   ngOnInit(): void {
-    // Load sort preference from localStorage
-    const savedSortOrder = localStorage.getItem('sortOrder');
-    if (savedSortOrder) {
-      this.sortAscending = savedSortOrder === 'asc';
-    }
+    this.sortAscending = this.sortService.getSortOrder();
     this.loadLeaderboard();
   }
 
   loadLeaderboard() {
     this.leaderboardService.getLeaderboard().subscribe({
       next: (data) => {
-        // Sort the data
-        this.players = this.sortPlayers(data);
+        this.players = this.sortService.sortPlayers(data, this.sortAscending);
       },
       error: (error) => {
         console.error('Error loading leaderboard:', error);
@@ -39,58 +39,36 @@ export class LeaderboardComponent implements OnInit {
     });
   }
 
-  sortPlayers(players: Player[]): Player[] {
-    return [...players].sort((a, b) => {
-      if (this.sortAscending) {
-        return a.score - b.score;
-      } else {
-        return b.score - a.score;
-      }
-    });
-  }
-
   toggleSortOrder() {
     this.sortAscending = !this.sortAscending;
-    // Save sort preference to localStorage
-    localStorage.setItem('sortOrder', this.sortAscending ? 'asc' : 'desc');
-    // Re-sort the current data
-    this.players = this.sortPlayers(this.players);
+    this.sortService.setSortOrder(this.sortAscending);
+    this.players = this.sortService.sortPlayers(this.players, this.sortAscending);
   }
 
   toggleForm() {
     this.showForm = !this.showForm;
   }
 
-  addPlayer() {
-    if (this.newPlayer.playerName && this.newPlayer.score) {
-      const player = {
-        playerName: this.newPlayer.playerName,
-        score: this.newPlayer.score
-      };
-      
-      this.leaderboardService.addPlayer(player).subscribe({
-        next: () => {
-          this.loadLeaderboard();
-          this.newPlayer = { playerName: '', score: 0 };
-          this.showForm = false;
-        },
-        error: (error) => {
-          console.error('Error adding player:', error);
-        }
-      });
-    }
+  onPlayerAdded(player: Player) {
+    this.leaderboardService.addPlayer(player).subscribe({
+      next: () => {
+        this.loadLeaderboard();
+        this.showForm = false;
+      },
+      error: (error) => {
+        console.error('Error adding player:', error);
+      }
+    });
   }
 
-  deletePlayer(id: number | undefined) {
-    if (id !== undefined) {
-      this.leaderboardService.deletePlayer(id).subscribe({
-        next: () => {
-          this.loadLeaderboard();
-        },
-        error: (error) => {
-          console.error('Error deleting player', error);
-        }
-      });
-    }
+  onPlayerDeleted(id: number) {
+    this.leaderboardService.deletePlayer(id).subscribe({
+      next: () => {
+        this.loadLeaderboard();
+      },
+      error: (error) => {
+        console.error('Error deleting player:', error);
+      }
+    });
   }
 }
