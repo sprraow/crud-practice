@@ -1,15 +1,20 @@
 <div class="leaderboard-container">
     <h1>Leaderboard</h1>
 
-    <button (click)="toggleForm()">
-        {{ showForm ? 'Hide' : 'Add Player' }}
-    </button>
+    <div class="button-container">
+        <button (click)="toggleForm()">
+            {{ showForm ? 'Hide' : 'Add Player' }}
+        </button>
+        <button (click)="toggleSortOrder()" class="sort-button">
+            Sort: {{ sortAscending ? '↑ Ascending' : '↓ Descending' }}
+        </button>
+    </div>
 
     <div *ngIf="showForm" class="form-container">
         <form (ngSubmit)="addPlayer()">
             <label>
                 Name:
-                <input type="text" [(ngModel)]="newPlayer.name" name="playerName" required/>
+                <input type="text" [(ngModel)]="newPlayer.playerName" name="playerName" required/>
             </label>
             <br />
             <label>
@@ -25,6 +30,7 @@
         <li *ngFor="let player of players" class="player-item">
             <span class="player-name">{{ player.playerName }}</span>
             <span class="player-score">{{ player.score }}</span>
+            <button class="delete-button" (click)="deletePlayer(player.id)">X</button>
         </li>
     </ol>
 </div>

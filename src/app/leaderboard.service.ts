@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Player } from './player.model'
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,15 @@ export class LeaderboardService {
 
   constructor(private http: HttpClient) { }
 
-  getLeaderboard(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getLeaderboard(sortField: string = 'score', sortOrder: string = 'desc'): Observable<Player[]> {
+    return this.http.get<Player[]>(`${this.apiUrl}?_sort=${sortField}&_order=${sortOrder}`);
   }
 
-  addPlayer(player: { playerName: string; score: number }): Observable<any> {
-    return this.http.post<any>(this.apiUrl, player);
+  addPlayer(player: Player): Observable<Player> {
+    return this.http.post<Player>(this.apiUrl, player);
+  }
+
+  deletePlayer(id: number): Observable<Player> {
+    return this.http.delete<Player>(`${this.apiUrl}/${id}`);
   }
 }
