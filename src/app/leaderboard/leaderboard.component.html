@@ -1,5 +1,26 @@
 <div class="leaderboard-container">
-    <h1>Ladderboard</h1>
+    <h1>Leaderboard</h1>
+
+    <button (click)="toggleForm()">
+        {{ showForm ? 'Hide' : 'Add Player' }}
+    </button>
+
+    <div *ngIf="showForm" class="form-container">
+        <form (ngSubmit)="addPlayer()">
+            <label>
+                Name:
+                <input type="text" [(ngModel)]="newPlayer.name" name="playerName" required/>
+            </label>
+            <br />
+            <label>
+                Score:
+                <input type="number" [(ngModel)]="newPlayer.score" name="score" required />
+            </label>
+            <br />
+            <button type="submit">Add Player</button>
+        </form>
+    </div>
+
     <ol>
         <li *ngFor="let player of players" class="player-item">
             <span class="player-name">{{ player.playerName }}</span>
