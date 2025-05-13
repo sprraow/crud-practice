@@ -14,19 +14,6 @@
     justify-content: center;
 }
 
-.clear-button {
-    background-color: #ff4444;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.clear-button:hover {
-    background-color: #cc0000;
-}
-
 .sort-button {
     background-color: #4a90e2;
     color: white;
