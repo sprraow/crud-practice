@@ -51,7 +51,8 @@ export class LeaderboardComponent implements OnInit {
 
   onPlayerAdded(player: Player) {
     this.leaderboardService.addPlayer(player).subscribe({
-      next: () => {
+      next: (newPlayer) => {
+        console.log("Added new player", newPlayer)
         this.loadLeaderboard();
         this.showForm = false;
       },
