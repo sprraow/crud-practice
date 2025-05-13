@@ -1,5 +1,5 @@
 {
-  "name": "leaderboard",
+  "name": "angular-leaderboard",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",

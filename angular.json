@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "leaderboard": {
+    "angular-leaderboard": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/leaderboard",
+            "outputPath": "dist/angular-leaderboard",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "leaderboard:build:production"
+              "buildTarget": "angular-leaderboard:build:production"
             },
             "development": {
-              "buildTarget": "leaderboard:build:development"
+              "buildTarget": "angular-leaderboard:build:development"
             }
           },
           "defaultConfiguration": "development"

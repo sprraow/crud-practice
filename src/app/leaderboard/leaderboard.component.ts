@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LeaderboardService } from '../leaderboard.service';
+import { LeaderboardService } from '../services/leaderboard.service';
 import { SortService } from '../services/sort.service';
 import { Player } from '../player.model';
 import { PlayerFormComponent } from '../player-form/player-form.component';
