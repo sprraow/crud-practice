@@ -1,9 +1,9 @@
 <div class="leaderboard-container">
-    <h1>Leaderboard</h1>
+    <h2 class="leaderboard-title">Leaderboard</h2>
 
     <div class="button-container">
-        <button (click)="toggleForm()">
-            {{ showForm ? 'Hide' : 'Add Player' }}
+        <button (click)="toggleForm()" class="sort-button">
+            {{ showForm ? 'Hide Form' : 'Add Player' }}
         </button>
         <button (click)="toggleSortOrder()" class="sort-button">
             Sort: {{ sortAscending ? '↑ Ascending' : '↓ Descending' }}
@@ -17,6 +17,7 @@
 
     <app-player-list
         [players]="players"
+        [sortAscending]="sortAscending"
         (deletePlayer)="onPlayerDeleted($event)"
     ></app-player-list>
 </div>

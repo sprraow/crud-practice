@@ -11,6 +11,7 @@ import { Player } from '../player.model';
 })
 export class PlayerListComponent {
   @Input() players: Player[] = [];
+  @Input() sortAscending: boolean = false;
   @Output() deletePlayer = new EventEmitter<number>();
   
   onDelete(id: number | undefined) {
