@@ -1,7 +1,5 @@
 <ol [ngClass]="sortAscending ? 'ascending' : 'descending'">
-  <li *ngFor="let player of players; let i = index" 
-      class="player-item"
-      [ngClass]="{'top-player': i < 3}">
+  <li *ngFor="let player of players; let i = index" class="player-item"[ngClass]="{'top-player': i < 3}">
     <div class="player-name">{{ player.playerName }}</div>
     <div class="player-score">{{ player.score }}</div>
     <button class="delete-button" (click)="onDelete(player.id)">X</button>
