@@ -17,11 +17,20 @@ ol {
 
 .player-name {
   font-weight: 600;
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .player-score {
+  flex: 0 0 80px;
+  width: 60px;
+  text-align: center;
   color: #4a90e2;
 }
+
 
 .delete-button {
   background-color: #ff4444;

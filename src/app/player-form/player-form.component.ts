@@ -20,4 +20,4 @@ export class PlayerFormComponent {
       this.player = { playerName: '', score: 0 };
     }
   }
-} 
+}

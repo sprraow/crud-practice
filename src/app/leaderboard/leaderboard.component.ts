@@ -64,7 +64,8 @@ export class LeaderboardComponent implements OnInit {
 
   onPlayerDeleted(id: number) {
     this.leaderboardService.deletePlayer(id).subscribe({
-      next: () => {
+      next: (deletedPlayer) => {
+        console.log('Deleted player', deletedPlayer)
         this.loadLeaderboard();
       },
       error: (error) => {

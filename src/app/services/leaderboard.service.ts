@@ -22,4 +22,9 @@ export class LeaderboardService {
   deletePlayer(id: number): Observable<Player> {
     return this.http.delete<Player>(`${this.apiUrl}/${id}`);
   }
+
+  updatePlayer(player: Player): Observable<Player> {
+  return this.http.put<Player>(`${this.apiUrl}/${player.id}`, player);
+}
+
 }

@@ -2,14 +2,14 @@
   <form (ngSubmit)="onSubmit()">
     <label>
       Name:
-      <input type="text" [(ngModel)]="player.playerName" name="playerName" required/>
+      <input placeholder="Enter a name" type="text" [(ngModel)]="player.playerName" name="playerName" required/>
     </label>
     <br />
     <label>
       Score:
-      <input type="number" [(ngModel)]="player.score" name="score" required />
+      <input placeholder="Enter a score" type="number" [(ngModel)]="player.score" name="score" required />
     </label>
     <br />
     <button type="submit">Add Player</button>
   </form>
-</div> 
+</div>

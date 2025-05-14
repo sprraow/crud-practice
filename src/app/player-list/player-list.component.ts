@@ -12,7 +12,7 @@ import { Player } from '../player.model';
 export class PlayerListComponent {
   @Input() players: Player[] = [];
   @Output() deletePlayer = new EventEmitter<number>();
-
+  
   onDelete(id: number | undefined) {
     if (id !== undefined) {
       this.deletePlayer.emit(id);
