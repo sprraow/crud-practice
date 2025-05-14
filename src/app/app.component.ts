@@ -4,7 +4,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, LeaderboardComponent],
+  imports: [LeaderboardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
