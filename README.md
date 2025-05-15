@@ -4,15 +4,15 @@ This is a simple Angular app that displays a leaderboard of players and their sc
 
 Features:
 
-Display a sorted list of players by score
+- Display a sorted list of players by score
 
-Add new players to the leaderboard
+- Add new players to the leaderboard
 
-Delete players from the leaderboard
+- Delete players from the leaderboard
 
-Sort players in ascending or descending order
+- Sort players in ascending or descending order
 
-Persist sort order in local storage
+- Persist sort order in local storage
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
 
