@@ -3,6 +3,7 @@
 This is a simple Angular app that displays a leaderboard of players and their scores. Users can add, delete, and sort players. The app communicates with a backend API to fetch and update player data.
 
 Features:
+
 Display a sorted list of players by score
 
 Add new players to the leaderboard
