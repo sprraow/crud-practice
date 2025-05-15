@@ -1,5 +1,19 @@
 # Leaderboard
 
+This is a simple Angular app that displays a leaderboard of players and their scores. Users can add, delete, and sort players. The app communicates with a backend API to fetch and update player data.
+
+Features:
+
+- Display a sorted list of players by score
+
+- Add new players to the leaderboard
+
+- Delete players from the leaderboard
+
+- Sort players in ascending or descending order
+
+- Persist sort order in local storage
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
 
 ## Development server
