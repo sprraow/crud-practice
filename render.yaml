@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: angular-leaderboard
+    env: static
+    buildCommand: npm install && ng build --configuration production
+    staticPublishPath: ./dist/angular-leaderboard/browser
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html 
