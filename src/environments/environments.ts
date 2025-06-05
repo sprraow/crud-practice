@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/players'
+  apiUrl: 'http://known-border-production.up.railway.app'
 };

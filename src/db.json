@@ -1,11 +1,6 @@
 {
   "players": [
     {
-      "id": "c02e",
-      "playerName": "abe",
-      "score": 100
-    },
-    {
       "id": "e6d3",
       "playerName": "Babe",
       "score": 90
@@ -26,11 +21,6 @@
       "score": 60
     },
     {
-      "id": "329c",
-      "playerName": "Habe",
-      "score": 50
-    },
-    {
       "id": "f239",
       "playerName": "gabe",
       "score": 55
@@ -39,6 +29,11 @@
       "id": "77f4",
       "playerName": "habe",
       "score": 90
+    },
+    {
+      "id": "8edc",
+      "playerName": "yekkiw",
+      "score": 100
     }
   ]
 }
