@@ -8,20 +8,19 @@ import { environment } from '../../environments/environments';
   providedIn: 'root'
 })
 export class LeaderboardService {
-  //private apiUrl = 'http://localhost:3000/players';
-
+  
   constructor(private http: HttpClient) { }
 
   getLeaderboard(sortField: string = 'score', sortOrder: string = 'desc'): Observable<Player[]> {
-    return this.http.get<Player[]>(`${environment.apiUrl}?_sort=${sortField}&_order=${sortOrder}`);
+    return this.http.get<Player[]>(`${environment.apiUrl}/players?_sort=${sortField}&_order=${sortOrder}`);
   }
 
   addPlayer(player: Player): Observable<Player> {
-    return this.http.post<Player>(environment.apiUrl, player);
+    return this.http.post<Player>(`${environment.apiUrl}/players`, player);
   }
 
   deletePlayer(id: number): Observable<Player> {
-    return this.http.delete<Player>(`${environment.apiUrl}/${id}`);
+    return this.http.delete<Player>(`${environment.apiUrl}/players/${id}`);
   }
 
   //updatePlayer(player: Player): Observable<Player> {
