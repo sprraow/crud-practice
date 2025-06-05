@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://known-border-production.up.railway.app'
+  apiUrl: 'https://known-border-production.up.railway.app/players'
 };
