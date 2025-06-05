@@ -17,6 +17,7 @@ export class LeaderboardComponent implements OnInit {
   players: Player[] = [];
   showForm = false;
   sortAscending = false;
+  error: string | null = null;
 
   constructor(
     private leaderboardService: LeaderboardService,
@@ -29,12 +30,14 @@ export class LeaderboardComponent implements OnInit {
   }
 
   loadLeaderboard() {
+    this.error = null;
     this.leaderboardService.getLeaderboard().subscribe({
       next: (data) => {
         this.players = this.sortService.sortPlayers(data, this.sortAscending);
       },
       error: (error) => {
         console.error('Error loading leaderboard:', error);
+        this.error = 'Failed to load leaderboard. Please try again.';
       }
     });
   }
@@ -50,26 +53,30 @@ export class LeaderboardComponent implements OnInit {
   }
 
   onPlayerAdded(player: Player) {
+    this.error = null;
     this.leaderboardService.addPlayer(player).subscribe({
       next: (newPlayer) => {
-        console.log("Added new player", newPlayer)
+        console.log("Added new player", newPlayer);
         this.loadLeaderboard();
         this.showForm = false;
       },
       error: (error) => {
         console.error('Error adding player:', error);
+        this.error = 'Failed to add player. Please try again.';
       }
     });
   }
 
-  onPlayerDeleted(id: number) {
+  onPlayerDeleted(id: string) {
+    this.error = null;
     this.leaderboardService.deletePlayer(id).subscribe({
       next: (deletedPlayer) => {
-        console.log('Deleted player', deletedPlayer)
+        console.log('Deleted player', deletedPlayer);
         this.loadLeaderboard();
       },
       error: (error) => {
         console.error('Error deleting player:', error);
+        this.error = 'Failed to delete player. Please try again.';
       }
     });
   }
